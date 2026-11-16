@@ -10,7 +10,7 @@ paths = [ROOT / p for p in TOP]
 for folder in [next(ROOT.glob('*_files')), ROOT / 'LICENSES', ROOT / 'tools/archive']:
     paths.extend(p for p in folder.iterdir() if p.is_file() and p.suffix in
                  {'.html', '.css', '.js', '.mjs', '.py', '.json', '.md', '.txt'})
-files = [{'path': p.relative_to(ROOT).as_posix(), 'size': p.stat().st_size}
+files = [{'path': p.relative_to(ROOT).as_posix()}
          for p in sorted(set(paths), key=lambda p: (p.name != 'index.html', p.as_posix()))]
 (ROOT / 'source-files.json').write_text(json.dumps({'files': files}, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
 print(f'Indexed {len(files)} text files')

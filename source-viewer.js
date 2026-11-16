@@ -47,7 +47,7 @@ async function loadFile(path) {
     raw.href = url.href;
     raw.hidden = false;
     copy.disabled = next.disabled = false;
-    status.textContent = `${path} · ${text.split("\n").length.toLocaleString()} 行 · ${file.size.toLocaleString()} bytes`;
+    status.textContent = `${path} · ${text.split("\n").length.toLocaleString()} 行 · ${new TextEncoder().encode(text).length.toLocaleString()} bytes`;
     history.replaceState(null, "", `#file=${encodeURIComponent(path)}`);
   } catch (error) {
     if (id === request)
