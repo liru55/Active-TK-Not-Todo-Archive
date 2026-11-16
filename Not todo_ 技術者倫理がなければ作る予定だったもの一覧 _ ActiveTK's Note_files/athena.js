@@ -14,10 +14,13 @@ window.archive_analytics = (function defineArchiveAnalytics() {
   // keep orignal Date object so as not to be affected by wayback's
   // hijacking global Date object
   var Date = window.Date;
-  var sendBeacon = window.navigator && window.navigator.sendBeacon ? window.navigator.sendBeacon.bind(window.navigator) : null;
+  var sendBeacon =
+    window.navigator && window.navigator.sendBeacon
+      ? window.navigator.sendBeacon.bind(window.navigator)
+      : null;
   var ARCHIVE_ANALYTICS_VERSION = 2;
-  var DEFAULT_SERVICE = 'ao_2';
-  var NO_SAMPLING_SERVICE = 'ao_no_sampling'; // sends every event instead of a percentage
+  var DEFAULT_SERVICE = "ao_2";
+  var NO_SAMPLING_SERVICE = "ao_no_sampling"; // sends every event instead of a percentage
 
   var startTime = new Date();
 
@@ -25,7 +28,7 @@ window.archive_analytics = (function defineArchiveAnalytics() {
    * @return {Boolean}
    */
   function isPerformanceTimingApiSupported() {
-    return 'performance' in window && 'timing' in window.performance;
+    return "performance" in window && "timing" in window.performance;
   }
 
   /**
@@ -41,10 +44,8 @@ window.archive_analytics = (function defineArchiveAnalytics() {
   function getLoadTime() {
     var start;
 
-    if (isPerformanceTimingApiSupported())
-      start = window.performance.timing.domLoading;
-    else
-      start = startTime.getTime();
+    if (isPerformanceTimingApiSupported()) start = window.performance.timing.domLoading;
+    else start = startTime.getTime();
 
     return new Date().getTime() - start;
   }
@@ -58,8 +59,7 @@ window.archive_analytics = (function defineArchiveAnalytics() {
    * @return {Number|null} null if the browser doesn't support the Performance API
    */
   function getNavToDoneTime() {
-    if (!isPerformanceTimingApiSupported())
-      return null;
+    if (!isPerformanceTimingApiSupported()) return null;
 
     return new Date().getTime() - window.performance.timing.navigationStart;
   }
@@ -74,7 +74,7 @@ window.archive_analytics = (function defineArchiveAnalytics() {
    */
   function computeWithUnit(original, doOperation) {
     var number = parseFloat(original, 10);
-    var unit = original.replace(/(\d*\.\d+)|\d+/, '');
+    var unit = original.replace(/(\d*\.\d+)|\d+/, "");
 
     return doOperation(number) + unit;
   }
@@ -87,18 +87,15 @@ window.archive_analytics = (function defineArchiveAnalytics() {
   function getDefaultFontSize() {
     var fontSizeStr;
 
-    if (!('getComputedStyle' in window))
-      return null;
+    if (!("getComputedStyle" in window)) return null;
 
     var style = window.getComputedStyle(document.documentElement);
-    if (!style)
-      return null;
+    if (!style) return null;
 
     fontSizeStr = style.fontSize;
 
     // Don't modify the value if tracking book reader.
-    if (document.querySelector('#BookReader'))
-      return fontSizeStr;
+    if (document.querySelector("#BookReader")) return fontSizeStr;
 
     return computeWithUnit(fontSizeStr, function reverseBootstrapFontSize(number) {
       // Undo the 62.5% size applied in the Bootstrap CSS.
@@ -119,26 +116,26 @@ window.archive_analytics = (function defineArchiveAnalytics() {
     var params = {};
     var query = location.search;
     if (!query) return params;
-    vars = query.substring(1).split('&');
+    vars = query.substring(1).split("&");
     for (i = 0; i < vars.length; i++) {
-      pair = vars[i].split('=');
+      pair = vars[i].split("=");
       params[pair[0]] = decodeURIComponent(pair[1]);
     }
     return params;
   }
 
   function getMetaProp(name) {
-    var metaTag = document.querySelector('meta[property=' + name + ']');
-    return metaTag ? metaTag.getAttribute('content') || null : null;
+    var metaTag = document.querySelector("meta[property=" + name + "]");
+    return metaTag ? metaTag.getAttribute("content") || null : null;
   }
 
   var ArchiveAnalytics = {
     /**
      * @type {String|null}
      */
-    service: getMetaProp('service'),
-    mediaType: getMetaProp('mediatype'),
-    primaryCollection: getMetaProp('primary_collection'),
+    service: getMetaProp("service"),
+    mediaType: getMetaProp("mediatype"),
+    primaryCollection: getMetaProp("primary_collection"),
 
     /**
      * Key-value pairs to send in pageviews (you can read this after a pageview to see what was
@@ -155,10 +152,8 @@ window.archive_analytics = (function defineArchiveAnalytics() {
      * @param {Boolean}  [augment_for_ao_site]  (deprecated) if true, add some archive.org site-specific values
      */
     send_ping: function send_ping(values, onload_callback, augment_for_ao_site) {
-      if (sendBeacon)
-        this.send_ping_via_beacon(values);
-      else
-        this.send_ping_via_image(values);
+      if (sendBeacon) this.send_ping_via_beacon(values);
+      else this.send_ping_via_image(values);
     },
 
     /**
@@ -179,7 +174,7 @@ window.archive_analytics = (function defineArchiveAnalytics() {
       var url = this.generate_tracking_url(values || {});
       var loadtime_img = new Image(1, 1);
       loadtime_img.src = url;
-      loadtime_img.alt = '';
+      loadtime_img.alt = "";
     },
 
     /**
@@ -188,7 +183,7 @@ window.archive_analytics = (function defineArchiveAnalytics() {
      * @return {String} URL to use for tracking call
      */
     generate_tracking_url: function generate_tracking_url(params) {
-      var baseUrl = '//athena.archive.org/0.gif';
+      var baseUrl = "//athena.archive.org/0.gif";
       var keys;
       var outputParams = params;
       var outputParamsArray = [];
@@ -198,12 +193,14 @@ window.archive_analytics = (function defineArchiveAnalytics() {
       // Build array of querystring parameters
       keys = Object.keys(outputParams);
       keys.forEach(function keyIteration(key) {
-        outputParamsArray.push(encodeURIComponent(key) + '=' + encodeURIComponent(outputParams[key]));
+        outputParamsArray.push(
+          encodeURIComponent(key) + "=" + encodeURIComponent(outputParams[key]),
+        );
       });
-      outputParamsArray.push('version=' + ARCHIVE_ANALYTICS_VERSION);
-      outputParamsArray.push('count=' + (keys.length + 2)); // Include `version` and `count` in count
+      outputParamsArray.push("version=" + ARCHIVE_ANALYTICS_VERSION);
+      outputParamsArray.push("count=" + (keys.length + 2)); // Include `version` and `count` in count
 
-      return baseUrl + '?' + outputParamsArray.join('&');
+      return baseUrl + "?" + outputParamsArray.join("&");
     },
 
     /**
@@ -215,7 +212,7 @@ window.archive_analytics = (function defineArchiveAnalytics() {
       var navToDoneTime = getNavToDoneTime();
       if (loadTime) additionalValues.loadtime = loadTime;
       if (navToDoneTime) additionalValues.nav_to_done_ms = navToDoneTime;
-      this.send_event('page_action', 'scroll_fetch', location.pathname, additionalValues);
+      this.send_event("page_action", "scroll_fetch", location.pathname, additionalValues);
     },
 
     send_scroll_fetch_base_event: function send_scroll_fetch_base_event() {
@@ -224,7 +221,7 @@ window.archive_analytics = (function defineArchiveAnalytics() {
       var navToDoneTime = getNavToDoneTime();
       if (loadTime) additionalValues.loadtime = loadTime;
       if (navToDoneTime) additionalValues.nav_to_done_ms = navToDoneTime;
-      this.send_event('page_action', 'scroll_fetch_base', location.pathname, additionalValues);
+      this.send_event("page_action", "scroll_fetch_base", location.pathname, additionalValues);
     },
 
     /**
@@ -248,48 +245,37 @@ window.archive_analytics = (function defineArchiveAnalytics() {
        */
       function get_locale() {
         if (navigator) {
-          if (navigator.language)
-            return navigator.language;
-
-          else if (navigator.browserLanguage)
-            return navigator.browserLanguage;
-
-          else if (navigator.systemLanguage)
-            return navigator.systemLanguage;
-
-          else if (navigator.userLanguage)
-            return navigator.userLanguage;
+          if (navigator.language) return navigator.language;
+          else if (navigator.browserLanguage) return navigator.browserLanguage;
+          else if (navigator.systemLanguage) return navigator.systemLanguage;
+          else if (navigator.userLanguage) return navigator.userLanguage;
         }
-        return '';
+        return "";
       }
 
       defaultFontSize = getDefaultFontSize();
 
       // Set field values
-      this.values.kind     = 'pageview';
-      this.values.timediff = (new Date().getTimezoneOffset()/60)*(-1); // *timezone* diff from UTC
-      this.values.locale   = get_locale();
-      this.values.referrer = (document.referrer == '' ? '-' : document.referrer);
+      this.values.kind = "pageview";
+      this.values.timediff = (new Date().getTimezoneOffset() / 60) * -1; // *timezone* diff from UTC
+      this.values.locale = get_locale();
+      this.values.referrer = document.referrer == "" ? "-" : document.referrer;
 
-      if (loadTime)
-        this.values.loadtime = loadTime;
+      if (loadTime) this.values.loadtime = loadTime;
 
-      if (navToDoneTime)
-        this.values.nav_to_done_ms = navToDoneTime;
+      if (navToDoneTime) this.values.nav_to_done_ms = navToDoneTime;
 
       if (settings.trackingId) {
         this.values.ga_tid = settings.trackingId;
       }
 
       /* START CUSTOM DIMENSIONS */
-      if (defaultFontSize)
-        this.values.iaprop_fontSize = defaultFontSize;
+      if (defaultFontSize) this.values.iaprop_fontSize = defaultFontSize;
 
-      if ('devicePixelRatio' in window)
+      if ("devicePixelRatio" in window)
         this.values.iaprop_devicePixelRatio = window.devicePixelRatio;
 
-      if (mediaType)
-        this.values.iaprop_mediaType = mediaType;
+      if (mediaType) this.values.iaprop_mediaType = mediaType;
 
       if (settings.mediaLanguage) {
         this.values.iaprop_mediaLanguage = settings.mediaLanguage;
@@ -300,8 +286,7 @@ window.archive_analytics = (function defineArchiveAnalytics() {
       }
       /* END CUSTOM DIMENSIONS */
 
-      if (page)
-        this.values.page = page;
+      if (page) this.values.page = page;
 
       this.send_ping(this.values);
     },
@@ -313,12 +298,7 @@ window.archive_analytics = (function defineArchiveAnalytics() {
      * @param {string} label
      * @param {Object} additionalEventParams
      */
-    send_event: function send_event(
-        category,
-        action,
-        label,
-        additionalEventParams
-    ) {
+    send_event: function send_event(category, action, label, additionalEventParams) {
       if (!label) label = window.location.pathname;
       if (!additionalEventParams) additionalEventParams = {};
       if (additionalEventParams.mediaLanguage) {
@@ -327,13 +307,13 @@ window.archive_analytics = (function defineArchiveAnalytics() {
       }
       var eventParams = Object.assign(
         {
-          kind: 'event',
+          kind: "event",
           ec: category,
           ea: action,
           el: label,
           cache_bust: Math.random(),
         },
-        additionalEventParams
+        additionalEventParams,
       );
       this.send_ping(eventParams);
     },
@@ -352,7 +332,7 @@ window.archive_analytics = (function defineArchiveAnalytics() {
       category,
       action,
       label,
-      additionalEventParams
+      additionalEventParams,
     ) {
       var extraParams = additionalEventParams || {};
       extraParams.service = NO_SAMPLING_SERVICE;
@@ -364,7 +344,7 @@ window.archive_analytics = (function defineArchiveAnalytics() {
      */
     send_pageview_on_load: function send_pageview_on_load(options) {
       var self = this;
-      window.addEventListener('load', function send_pageview_with_options() {
+      window.addEventListener("load", function send_pageview_with_options() {
         self.send_pageview(options);
       });
     },
@@ -380,13 +360,9 @@ window.archive_analytics = (function defineArchiveAnalytics() {
       var actionValue;
       var eventValue = getParams(location).iax;
       if (!eventValue) return;
-      eventValues = eventValue.split('|');
-      actionValue = eventValues.length >= 1 ? eventValues[1] : '';
-      this.send_event_no_sampling(
-        eventValues[0],
-        actionValue,
-        window.location.pathname
-      );
+      eventValues = eventValue.split("|");
+      actionValue = eventValues.length >= 1 ? eventValues[1] : "";
+      this.send_event_no_sampling(eventValues[0], actionValue, window.location.pathname);
     },
 
     /**
@@ -408,12 +384,12 @@ window.archive_analytics = (function defineArchiveAnalytics() {
      */
     set_up_event_tracking: function set_up_event_tracking() {
       var self = this;
-      var clickTrackingAttributeName = 'event-click-tracking';
-      var formTrackingAttributeName = 'event-form-tracking';
-      var trackingOptionsAttributeName = 'event-tracking-options';
+      var clickTrackingAttributeName = "event-click-tracking";
+      var formTrackingAttributeName = "event-form-tracking";
+      var trackingOptionsAttributeName = "event-tracking-options";
 
       function handleAction(event, attributeName) {
-        var selector = '[data-' + attributeName + ']';
+        var selector = "[data-" + attributeName + "]";
         var eventTarget = event.target;
         if (!eventTarget) return;
         var target = eventTarget.closest(selector);
@@ -423,14 +399,14 @@ window.archive_analytics = (function defineArchiveAnalytics() {
         var options;
         categoryAction = target.dataset[toCamelCase(attributeName)];
         if (!categoryAction) return;
-        categoryActionParts = categoryAction.split('|');
+        categoryActionParts = categoryAction.split("|");
         options = target.dataset[toCamelCase(trackingOptionsAttributeName)];
         options = options ? JSON.parse(options) : {};
         self.send_event(
           categoryActionParts[0],
           categoryActionParts[1],
           categoryActionParts[2] || window.location.pathname,
-          options.service ? { service: options.service } : {}
+          options.service ? { service: options.service } : {},
         );
       }
 
@@ -438,13 +414,13 @@ window.archive_analytics = (function defineArchiveAnalytics() {
         return str.replace(/\W+(.)/g, function (match, chr) {
           return chr.toUpperCase();
         });
-      };
+      }
 
-      document.addEventListener('click', function(e) {
+      document.addEventListener("click", function (e) {
         handleAction(e, clickTrackingAttributeName);
       });
 
-      document.addEventListener('submit', function(e) {
+      document.addEventListener("submit", function (e) {
         handleAction(e, formTrackingAttributeName);
       });
     },
@@ -464,12 +440,12 @@ window.archive_analytics = (function defineArchiveAnalytics() {
     create_tracking_image: function create_tracking_image(type) {
       this.send_ping_via_image({
         cache_bust: Math.random(),
-        kind: 'track_js',
+        kind: "track_js",
         track_js_case: type,
       });
-    }
+    },
   };
 
   return ArchiveAnalytics;
-}());
+})();
 // @license-end

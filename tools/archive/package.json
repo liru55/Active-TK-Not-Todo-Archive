@@ -1,0 +1,13 @@
+{
+  "name": "active-tk-archive-maintenance",
+  "version": "1.0.0",
+  "private": true,
+  "license": "MIT",
+  "scripts": {
+    "format": "node format.mjs"
+  },
+  "devDependencies": {
+    "acorn": "8.15.0",
+    "prettier": "3.6.2"
+  }
+}

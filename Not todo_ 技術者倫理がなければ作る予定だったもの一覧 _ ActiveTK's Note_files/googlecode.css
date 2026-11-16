@@ -1,0 +1,95 @@
+pre code.hljs {
+  display: block;
+  overflow-x: auto;
+  padding: 1em;
+}
+code.hljs {
+  padding: 3px 5px;
+}
+.hljs {
+  background: #fff;
+  color: #000;
+}
+.hljs-comment,
+.hljs-quote {
+  color: #800;
+}
+.hljs-keyword,
+.hljs-name,
+.hljs-section,
+.hljs-selector-tag,
+.hljs-title {
+  color: #008;
+}
+.hljs-template-variable,
+.hljs-variable {
+  color: #660;
+}
+.hljs-regexp,
+.hljs-selector-attr,
+.hljs-selector-pseudo,
+.hljs-string {
+  color: #080;
+}
+.hljs-bullet,
+.hljs-link,
+.hljs-literal,
+.hljs-meta,
+.hljs-number,
+.hljs-symbol {
+  color: #066;
+}
+.hljs-attr,
+.hljs-built_in,
+.hljs-doctag,
+.hljs-params,
+.hljs-title,
+.hljs-type {
+  color: #606;
+}
+.hljs-attribute,
+.hljs-subst {
+  color: #000;
+}
+.hljs-formula {
+  background-color: #eee;
+  font-style: italic;
+}
+.hljs-selector-class,
+.hljs-selector-id {
+  color: #9b703f;
+}
+.hljs-addition {
+  background-color: #baeeba;
+}
+.hljs-deletion {
+  background-color: #ffc8bd;
+}
+.hljs-doctag,
+.hljs-strong {
+  font-weight: 700;
+}
+.hljs-emphasis {
+  font-style: italic;
+}
+/*
+     FILE ARCHIVED ON 03:09:22 Nov 15, 2026 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 01:02:13 Nov 16, 2026.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+*/
+/*
+playback timings (ms):
+  capture_cache.get: 0.299
+  captures_list: 0.403
+  exclusion.robots: 0.052
+  exclusion.robots.policy: 0.044
+  esindex: 0.007
+  cdx.remote: 10.194
+  LoadShardBlock: 230.936 (3)
+  PetaboxLoader3.datanode: 225.344 (4)
+  load_resource: 101.542
+  PetaboxLoader3.resolve: 42.033
+*/
