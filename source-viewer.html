@@ -1,0 +1,66 @@
+<!doctype html>
+<!-- SPDX-License-Identifier: MIT -->
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'none'; script-src 'self'; style-src 'self'; connect-src 'self'; base-uri 'none'; form-action 'none'; frame-src 'none'"
+    />
+    <meta name="referrer" content="no-referrer" />
+    <title>ソースコードViewer | Active-TK Archive</title>
+    <link rel="stylesheet" href="./source-viewer.css" />
+    <script src="./source-viewer.js" defer></script>
+  </head>
+  <body>
+    <main>
+      <nav aria-label="リンク">
+        <a href="./">アーカイブへ戻る</a
+        ><a href="https://github.com/liru55/Active-TK-Not-Todo-Archive"
+          >GitHubで見る</a
+        >
+      </nav>
+      <h1>ソースコードViewer</h1>
+      <p class="intro">
+        このアーカイブのファイルを、そのまま読める簡易ビューアです。表示したコードは実行しません。
+      </p>
+      <div class="toolbar">
+        <label class="file-label"
+          >ファイル<select id="file" disabled>
+            <option>読み込み中…</option>
+          </select></label
+        >
+        <a id="raw" hidden>元ファイルを開く</a>
+        <button id="copy" type="button" disabled>コピー</button>
+      </div>
+      <form id="search-form" role="search">
+        <label for="query">ファイル内を検索</label>
+        <input
+          id="query"
+          type="search"
+          placeholder="検索する文字列"
+          autocomplete="off"
+        />
+        <button id="next" type="submit" disabled>次を検索</button>
+      </form>
+      <p id="status" role="status" aria-live="polite">
+        ファイル一覧を読み込んでいます。
+      </p>
+      <textarea
+        id="code"
+        readonly
+        wrap="off"
+        spellcheck="false"
+        aria-label="選択したファイルのソースコード"
+      ></textarea>
+      <p class="footnote">
+        各ファイルの利用条件は
+        <a href="./THIRD_PARTY_NOTICES.md">第三者ライセンス一覧</a>と<a
+          href="./LICENSE"
+          >LICENSE</a
+        >を確認してください。
+      </p>
+    </main>
+  </body>
+</html>

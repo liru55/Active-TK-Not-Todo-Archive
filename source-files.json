@@ -1,0 +1,184 @@
+{
+  "files": [
+    {
+      "path": "index.html",
+      "size": 74563
+    },
+    {
+      "path": ".gitignore",
+      "size": 48
+    },
+    {
+      "path": "LICENSE",
+      "size": 1586
+    },
+    {
+      "path": "LICENSES/AGPL-3.0.txt",
+      "size": 34523
+    },
+    {
+      "path": "LICENSES/Apache-2.0.txt",
+      "size": 11358
+    },
+    {
+      "path": "LICENSES/es6-promise-MIT.txt",
+      "size": 1097
+    },
+    {
+      "path": "LICENSES/fontawesome-6.3.0.txt",
+      "size": 7427
+    },
+    {
+      "path": "LICENSES/glightbox-MIT.txt",
+      "size": 1096
+    },
+    {
+      "path": "LICENSES/highlightjs-11.6.0-BSD-3-Clause.txt",
+      "size": 1514
+    },
+    {
+      "path": "LICENSES/jquery-cookie-1.4.1-MIT.txt",
+      "size": 1051
+    },
+    {
+      "path": "LICENSES/marked-8.0.1-MIT.md",
+      "size": 2942
+    },
+    {
+      "path": "LICENSES/platformjs-1.3.6-MIT.txt",
+      "size": 1095
+    },
+    {
+      "path": "LICENSES/ruffle-MIT-OR-Apache-2.0.md",
+      "size": 108294
+    },
+    {
+      "path": "LICENSES/sources.json",
+      "size": 2261
+    },
+    {
+      "path": "LICENSES/tailwindcss-3.4.3-MIT.txt",
+      "size": 1071
+    },
+    {
+      "path": "Not todo_ 技術者倫理がなければ作る予定だったもの一覧 _ ActiveTK's Note_files/ActiveTK.js",
+      "size": 204970
+    },
+    {
+      "path": "Not todo_ 技術者倫理がなければ作る予定だったもの一覧 _ ActiveTK's Note_files/MathJax.js",
+      "size": 120429
+    },
+    {
+      "path": "Not todo_ 技術者倫理がなければ作る予定だったもの一覧 _ ActiveTK's Note_files/all.css",
+      "size": 122823
+    },
+    {
+      "path": "Not todo_ 技術者倫理がなければ作る予定だったもの一覧 _ ActiveTK's Note_files/banner-styles.css",
+      "size": 10365
+    },
+    {
+      "path": "Not todo_ 技術者倫理がなければ作る予定だったもの一覧 _ ActiveTK's Note_files/bundle-playback.js",
+      "size": 50837
+    },
+    {
+      "path": "Not todo_ 技術者倫理がなければ作る予定だったもの一覧 _ ActiveTK's Note_files/glightbox.css",
+      "size": 17615
+    },
+    {
+      "path": "Not todo_ 技術者倫理がなければ作る予定だったもの一覧 _ ActiveTK's Note_files/glightbox.js",
+      "size": 104043
+    },
+    {
+      "path": "Not todo_ 技術者倫理がなければ作る予定だったもの一覧 _ ActiveTK's Note_files/google-fonts-2.css",
+      "size": 240387
+    },
+    {
+      "path": "Not todo_ 技術者倫理がなければ作る予定だったもの一覧 _ ActiveTK's Note_files/google-fonts-3.css",
+      "size": 126228
+    },
+    {
+      "path": "Not todo_ 技術者倫理がなければ作る予定だったもの一覧 _ ActiveTK's Note_files/google-fonts.css",
+      "size": 248656
+    },
+    {
+      "path": "Not todo_ 技術者倫理がなければ作る予定だったもの一覧 _ ActiveTK's Note_files/googlecode.css",
+      "size": 1593
+    },
+    {
+      "path": "Not todo_ 技術者倫理がなければ作る予定だったもの一覧 _ ActiveTK's Note_files/gsap.js",
+      "size": 137953
+    },
+    {
+      "path": "Not todo_ 技術者倫理がなければ作る予定だったもの一覧 _ ActiveTK's Note_files/highlight.js",
+      "size": 230993
+    },
+    {
+      "path": "Not todo_ 技術者倫理がなければ作る予定だったもの一覧 _ ActiveTK's Note_files/iconochive.css",
+      "size": 6530
+    },
+    {
+      "path": "Not todo_ 技術者倫理がなければ作る予定だったもの一覧 _ ActiveTK's Note_files/marked.js",
+      "size": 60337
+    },
+    {
+      "path": "Not todo_ 技術者倫理がなければ作る予定だったもの一覧 _ ActiveTK's Note_files/menu-effect.js",
+      "size": 9599
+    },
+    {
+      "path": "Not todo_ 技術者倫理がなければ作る予定だったもの一覧 _ ActiveTK's Note_files/ruffle.js",
+      "size": 434425
+    },
+    {
+      "path": "Not todo_ 技術者倫理がなければ作る予定だったもの一覧 _ ActiveTK's Note_files/tailwind-3.4.3.js",
+      "size": 744336
+    },
+    {
+      "path": "Not todo_ 技術者倫理がなければ作る予定だったもの一覧 _ ActiveTK's Note_files/wombat.js",
+      "size": 162732
+    },
+    {
+      "path": "README.md",
+      "size": 2658
+    },
+    {
+      "path": "THIRD_PARTY_NOTICES.md",
+      "size": 8148
+    },
+    {
+      "path": "source-viewer.css",
+      "size": 1876
+    },
+    {
+      "path": "source-viewer.html",
+      "size": 2332
+    },
+    {
+      "path": "source-viewer.js",
+      "size": 3982
+    },
+    {
+      "path": "tools/archive/build-source-index.py",
+      "size": 948
+    },
+    {
+      "path": "tools/archive/fetch-licenses.py",
+      "size": 2310
+    },
+    {
+      "path": "tools/archive/format.mjs",
+      "size": 4846
+    },
+    {
+      "path": "tools/archive/package-lock.json",
+      "size": 1292
+    },
+    {
+      "path": "tools/archive/package.json",
+      "size": 247
+    },
+    {
+      "path": "tools/archive/remove-trackers.py",
+      "size": 3321
+    }
+  ]
+}

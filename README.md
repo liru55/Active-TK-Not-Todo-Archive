@@ -20,13 +20,21 @@ https://web.archive.org/web/20261115000447/https://note.activetk.jp/etc/uncensor
 `.download` と `.min` を取り除き、拡張子のないJS/CSSにも通常の拡張子を付けています。
 外部・インラインJavaScriptとCSSに改行とインデントを付けていますが、元の変数名や
 圧縮前のソースを復元したものではありません。既存の著作権・ライセンスコメントは保持しています。
-元の外部サービス参照は残るため、完全なオフライン動作は保証しません。
+Google Analytics、Cloudflare Web Analytics、Internet Archiveのアクセス計測、広告、
+Twitter/X埋め込み、User-Agentを外部送信するスクリプトを除去しています。
+アーカイブ再生用の初期化も外し、CSPで外部への自動通信・iframeを禁止しています。
+外部フォントなどは読み込まず、利用可能なフォントで表示します。通常の外部リンクは残っています。
+
+[ソースコードViewer](https://liru55.github.io/Active-TK-Not-Todo-Archive/source-viewer.html)
+ではファイル選択・文字列検索・コピーができます。表示するコードは実行しません。
 
 整形の再実行:
 
 ```sh
 npm ci --prefix tools/archive
 node tools/archive/format.mjs
+python tools/archive/remove-trackers.py
+python tools/archive/build-source-index.py
 ```
 
 整形前後のJavaScript構文木を比較してから保存します。比較時には位置・引用形式・

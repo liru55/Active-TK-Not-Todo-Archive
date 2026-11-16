@@ -1,7 +1,8 @@
 Scope
 =====
 The MIT License below applies ONLY to original maintenance tooling in
-tools/archive/, .gitignore, README.md, and THIRD_PARTY_NOTICES.md, to the
+tools/archive/, source-viewer.html, source-viewer.css, source-viewer.js,
+source-files.json, .gitignore, README.md, and THIRD_PARTY_NOTICES.md, to the
 extent copyright in those original contributions is held by liru55.
 
 It does NOT apply to archived pages, articles, images, scripts, stylesheets,

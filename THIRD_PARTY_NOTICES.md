@@ -5,6 +5,14 @@
 ルートの `LICENSE` は第三者コンテンツには適用されません。
 「未確認」は自由利用やパブリックドメインの宣言ではありません。
 
+追記: 計測・広告・ソーシャル埋め込みを削除しました。以下の一覧のうち
+`athena.js`、`google-tag.js`、`cloudflare-beacon.js`、`v1.js`、`widgets.js`、
+`widget_iframe.1227a5674072e080ffb1ba14ac0c1079.html`、`archive-today.blocker.js`
+は現在のファイルには含まれず、記載は削除前の保存物に関する履歴です。
+Wayback再生用の初期化・ツールバーとRuffleの読み込みも除去しました。
+残った再生ライブラリのファイルはソース参照用であり、ページからは実行しません。
+CSPで外部への自動通信とiframeを禁止しています。
+
 以下のファイル名は、特記のない限り
 `Not todo_ 技術者倫理がなければ作る予定だったもの一覧 _ ActiveTK's Note_files/` 配下です。
 バンドル内の一部品のライセンスを、バンドル全体には適用しません。
@@ -55,3 +63,7 @@ AGPL対象の整形後コードは本リポジトリに公開しています。
 保守ツールの開発依存物はPrettier 3.6.2（MIT）とAcorn 8.15.0（MIT）です。
 版は `tools/archive/package-lock.json` で固定しています。各ライセンスはパッケージ内に含まれます。
 `node_modules` は公開リポジトリには含めません。
+
+`source-viewer.html`、`source-viewer.js`、`source-viewer.css`、`source-files.json` は
+このアーカイブで追加したViewerで、ルート `LICENSE` のMIT対象です。
+Viewerで表示される第三者のコードは、それぞれの元の条件に従います。
